@@ -806,16 +806,7 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
 </script>
 
 
-<script>
-(function(){
-  function isMapImage(img){
-    return !!img.closest('.map-image-card,.network-image,.network-map-large');
-  }
-  const maps=[...document.querySelectorAll('.map-image-card img,.network-image img,.network-map-large img')];
-  if(!maps.length) return;
 
-  const box=document.createElement('div');
-  box.className='ligrain-map-lightbox';
   box.setAttribute('role','dialog');
   box.setAttribute('aria-modal','true');
   box.setAttribute('aria-label','Expanded logistics network map');
