@@ -481,6 +481,10 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
 .form-status.sending{color:#607d8b}
 #submitBtn[disabled]{opacity:.65;cursor:wait;transform:none!important}
 
+
+.turnstile-wrap{display:flex;justify-content:center;margin:8px 0 4px}
+@media(max-width:480px){.turnstile-wrap{justify-content:flex-start;overflow-x:auto}}
+
 </style>
 
 <link rel="canonical" href="https://ligrain.net/contact.html">
@@ -499,6 +503,7 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
 <meta name="twitter:image" content="https://ligrain.net/og-image.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Ligrain", "url": "https://ligrain.net", "email": "evgen@ligrain.net", "telephone": "+38268569168", "description": "Integrated logistics solutions across Europe, including rail, road, cargo transshipment, warehousing and operational coordination."}</script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <nav class="nav">
@@ -569,6 +574,11 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
       <label for="website">Website</label>
       <input id="website" name="website" tabindex="-1" autocomplete="off">
     </div>
+  </div>
+
+  
+  <div class="full turnstile-wrap">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAEiEgYo_8mlcS_0j" data-theme="light"></div>
   </div>
 
   <button class="btn btn-primary" id="submitBtn" type="submit">Send Shipment Request</button>
@@ -645,6 +655,7 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
         status.className = 'form-status success';
         status.textContent = 'Thank you. Your shipment request has been sent to Ligrain.';
         form.reset();
+        if (window.turnstile) window.turnstile.reset();
       } else {
         throw new Error(data.message || 'Unable to send the request.');
       }
