@@ -25,3 +25,4 @@ CONTACT FORM:
 The current static form opens the visitor's email application using mailto:.
 For true server-side submission without opening an email app, connect the form to
 your hosting mail handler, SMTP/API provider, or a form backend during deployment.
+Web Analytics enabled
