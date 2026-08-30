@@ -456,7 +456,31 @@ body{background:radial-gradient(circle at 92% 6%,rgba(124,199,230,.08),transpare
 .statbar{background:rgba(255,255,255,.7);border-radius:18px;overflow:hidden;box-shadow:0 12px 35px rgba(8,44,67,.045)}
 .network,.dark-band{background:radial-gradient(circle at 85% 20%,rgba(76,153,188,.16),transparent 28%),linear-gradient(145deg,#051a28 0%,#082d43 100%)}
 .partner-card{background:#fff;min-height:150px}.partner-card img{transition:transform .25s ease}.partner-card:hover img{transform:scale(1.035)}
-.cta-band{box-shadow:0 28px 75px rgba(8,44,67,.18);position:relative;overflow:hidden}
+.cta-band{
+ background:linear-gradient(135deg,#0b2f49,#184f70);
+ color:#fff;
+ border-radius:28px;
+ padding:44px 48px;
+ box-shadow:0 28px 75px rgba(8,44,67,.18);
+ position:relative;
+ overflow:hidden;
+}
+  .cta-band h2{
+ color:#fff;
+}
+
+.cta-band p{
+ color:#d8e6ee;
+}
+
+.cta-band .btn{
+ background:#fff;
+ color:#082c43;
+ border-color:#fff;
+}
+
+
+  
 .cta-band::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-80px;background:rgba(255,255,255,.045)}
 .cta-band>*{position:relative;z-index:1}
 .form,.contact-form{box-shadow:var(--shadow-soft)}
