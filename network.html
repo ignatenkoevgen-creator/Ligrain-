@@ -824,32 +824,7 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
 
 
 
-  box.setAttribute('role','dialog');
-  box.setAttribute('aria-modal','true');
-  box.setAttribute('aria-label','Expanded logistics network map');
-  box.innerHTML='<button type="button" aria-label="Close map">×</button><img alt="Expanded Ligrain logistics network map">';
-  document.body.appendChild(box);
-
-  const big=box.querySelector('img');
-  const close=()=>{box.classList.remove('is-open');document.body.style.overflow='';big.removeAttribute('src');};
-  box.querySelector('button').addEventListener('click',close);
-  box.addEventListener('click',e=>{if(e.target===box) close();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape') close();});
-
-  maps.forEach(img=>{
-    img.setAttribute('tabindex','0');
-    img.setAttribute('role','button');
-    img.setAttribute('aria-label','Open logistics network map');
-    const open=()=>{
-      big.src=img.currentSrc||img.src;
-      box.classList.add('is-open');
-      document.body.style.overflow='hidden';
-    };
-    img.addEventListener('click',open);
-    img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
-  });
-})();
-</script>
+  
 
 </body>
 </html>
