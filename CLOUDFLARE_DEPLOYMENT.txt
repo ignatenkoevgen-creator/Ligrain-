@@ -1,0 +1,101 @@
+LIGRAIN — CLOUDFLARE PAGES DEPLOYMENT V21
+
+IMPORTANT
+Cloudflare Pages does not run PHP. This package replaces contact.php with:
+functions/api/contact.js
+
+The contact form posts to:
+POST /api/contact
+
+EMAIL DELIVERY
+The Function uses Cloudflare Email Service REST API.
+
+REQUIRED CLOUDFLARE SETTINGS
+
+1. EMAIL SENDING
+Cloudflare Dashboard:
+Compute > Email Service > Email Sending
+Onboard the domain:
+ligrain.net
+
+Cloudflare will configure/offer SPF, DKIM, bounce MX, and DMARC records.
+
+2. API TOKEN
+Create a Cloudflare API token with:
+Email Sending: Edit
+
+3. PAGES ENVIRONMENT VARIABLES / SECRETS
+In the Pages project add:
+
+CLOUDFLARE_ACCOUNT_ID
+= your Cloudflare Account ID
+
+CLOUDFLARE_EMAIL_API_TOKEN
+= the token created above
+
+Do NOT put the API token in HTML or in the Git repository.
+
+4. DEPLOYMENT METHOD
+Because this project contains Pages Functions, use one of:
+- Git integration (recommended), or
+- Wrangler CLI
+
+Cloudflare dashboard Direct Upload does not deploy Pages Functions.
+
+Recommended project layout:
+/
+  index.html
+  about.html
+  services.html
+  network.html
+  partners.html
+  contact.html
+  functions/
+    api/
+      contact.js
+  _routes.json
+  robots.txt
+  sitemap.xml
+  ...
+
+5. GIT DEPLOYMENT
+Push this folder to GitHub/GitLab.
+In Cloudflare:
+Workers & Pages > Create / Connect to Git
+Build command: leave empty
+Build output directory: /
+(or the repository root, depending on the UI)
+
+6. CUSTOM DOMAIN
+Attach:
+ligrain.net
+and optionally:
+www.ligrain.net
+
+Choose one canonical domain and redirect the other.
+
+7. TEST
+Open:
+https://ligrain.net/contact.html
+
+Submit a test request.
+Expected result:
+"Thank you. Your shipment request has been sent to Ligrain."
+
+The message should arrive at:
+evgen@ligrain.net
+
+Sender:
+website@ligrain.net
+
+Reply-To:
+the visitor's email address.
+
+SECURITY
+- The API token remains server-side in Pages secrets.
+- Honeypot spam protection is included.
+- Input length and required-field validation are included.
+- Only /api/* invokes Pages Functions via _routes.json.
+
+NEXT RECOMMENDED STEP
+Add Cloudflare Turnstile to the contact form after the first live deployment.
