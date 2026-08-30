@@ -663,6 +663,23 @@ footer{background:linear-gradient(145deg,#03131d,#071f30);border-top:1px solid r
    margin:0 auto !important;
  }
 }
+/* FIX oversized footer on desktop */
+@media (min-width:981px){
+ footer{
+   height:auto !important;
+   min-height:0 !important;
+   flex:none !important;
+   padding:32px 0 !important;
+ }
+
+ footer .foot{
+   height:auto !important;
+   min-height:0 !important;
+   flex:none !important;
+   align-items:flex-end !important;
+ }
+}
+
 </style>
 
 <link rel="canonical" href="https://ligrain.net/network.html">
